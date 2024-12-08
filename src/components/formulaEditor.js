@@ -1,34 +1,24 @@
-import React, {useState, useEffect, useRef} from 'react';
+import React from 'react'
 
-import MathQuill from 'react-mathquill';
+const FormulaEditor = ({onFormulaChange}) =>{
+    const [formula, setformula] = React.useState('');
 
+    const handleChange = (e) => {
+        const newformula = e.target.value;
+        setformula(newformula);
+        onFormulaChange(newformula);
+    };
+    return (
+        <div className ="flex flex-col h-full text-black">
+            <textarea
+                value = {formula}
+                onChange = {handleChange}
+                className = "flex-1 border p-2 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder = "Введите формулу в формате LaTeX"
 
-const FormulaEditor = ({onChange}) => {
-        const [Latex, setLatex] = useState('');
-        const MathFieldRef = useRef(null);
+            ></textarea>
+        </div>
+    );
 
-        useEffect(() => {
-            if (MathFieldRef.current) {
-                MathFieldRef.current.latex(Latex);
-            }
-        
-        }, [Latex]);
-        
-        const handleLatexChange = (mathField) => {
-            setLatex(mathField.latex());
-            if (onChange){
-                onChange(mathField.latex());
-            }
-        };
-        return (
-            <div>
-            <MathQuill.MathField
-                ref = {MathFieldRef}
-                latex={Latex}
-                onChange={handleLatexChange}
-            />
-            </div>
-
-        );
 };
 export default FormulaEditor;

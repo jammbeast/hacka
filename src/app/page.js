@@ -3,29 +3,39 @@
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
 import dynamic from "next/dynamic";
-
-const FormulaEditor = dynamic(() => import("../components/formulaEditor"), {ssr : false});
-const FormulaDisplay = dynamic(() => import("../components/formulaDispay"), {ssr : false});
+import FormulaEditor from "../components/formulaEditor";
+import FormulaDisplay from "../components/formulaDisplay";
 export default function Home() {
 
-  const [latex, setLatex] = useState('');
+  const [formula, setFormula] = useState('');
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        
-        <div className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <div>
-            <h1> formula editor</h1>
-            <FormulaEditor onChange = {setLatex}/>
-            <h2> rendered formula</h2>
-
-            <FormulaDisplay latex={latex}/>
-          </div>
-        </div>
-
-        
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
+    <div className = "min-h-screen flex-row grid pb-4">
+    <div className=" flex flex-col">
+  
+  <div className="flex flex-1">
+    {/* Sidebar */}
+    <aside className="w-64 m-4 bg-gray-100 p-4 rounded">
+      Навигация
+    </aside>
+    
+    {/* Main Content */}
+    <main className="flex-1 p-4 grid grid-cols-2 gap-4">
+      {/* Редактор Формул */}
+      <section className="bg-white p-4 border rounded">
+        Редактор формул
+        <FormulaEditor onFormulaChange={setFormula} />
+      </section>
+      
+      {/* Анализ Формул */}
+      <section className="bg-white p-4 border rounded">
+        Анализ Формул
+        <FormulaDisplay formula={formula} />
+      </section>
+    </main>
+  </div>
+  
+  {/* Footer */}
+  <footer className=" gap-6 items-end justify-center flex">
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
           href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
@@ -39,7 +49,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Learn
+          Документация
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
@@ -54,7 +64,7 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Examples
+          Примеры
         </a>
         <a
           className="flex items-center gap-2 hover:underline hover:underline-offset-4"
@@ -69,10 +79,14 @@ export default function Home() {
             width={16}
             height={16}
           />
-          Go to nextjs.org →
+          Github →
         </a>
       </footer>
+</div>
+
+      
     </div>
+  
   );
 }
 {/* <div className="flex gap-4 items-center flex-col sm:flex-row">
@@ -100,3 +114,9 @@ export default function Home() {
             Read our docs
           </a>
         </div> */}
+
+
+
+
+
+       
