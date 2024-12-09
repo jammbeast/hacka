@@ -9,12 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "better-react-mathjax": "^2.0.4-beta1",
     "mathjax": "^3.2.2",
     "mathjax-react": "^2.0.1",
     "next": "15.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-mathjax": "^1.0.1",
+    "react-mathjax2": "^0.0.2",
     "react-mathquill": "^1.0.3"
   },
   "devDependencies": {

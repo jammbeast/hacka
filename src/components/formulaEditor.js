@@ -9,11 +9,11 @@ const FormulaEditor = ({onFormulaChange}) =>{
         onFormulaChange(newformula);
     };
     return (
-        <div className ="flex flex-col h-full text-black">
+        <div className ="flex flex-col h-[95%] text-white">
             <textarea
                 value = {formula}
                 onChange = {handleChange}
-                className = "flex-1 border p-2 rounded resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                className = "flex-1 border p-4 rounded- resize-none focus:outline-none focus:ring-2 bg-transparent focus:ring-gray-500"
                 placeholder = "Введите формулу в формате LaTeX"
 
             ></textarea>

@@ -21,15 +21,17 @@ export default function Home() {
     {/* Main Content */}
     <main className="flex-1 p-4 grid grid-cols-2 gap-4">
       {/* Редактор Формул */}
-      <section className="bg-white p-4 border rounded">
+      <section className="p-4 rounded font-[family-name:var(--font-geist-mono)]">
         Редактор формул
         <FormulaEditor onFormulaChange={setFormula} />
       </section>
       
       {/* Анализ Формул */}
-      <section className="bg-white p-4 border rounded">
+      <section className=" p-4 font-[family-name:var(--font-geist-mono)]">
         Анализ Формул
+        <div className = "border rounded p-4">
         <FormulaDisplay formula={formula} />
+        </div>  
       </section>
     </main>
   </div>
